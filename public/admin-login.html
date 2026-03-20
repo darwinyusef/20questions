@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Profesor – Infokey</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a2535;
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .card {
+            background: white; border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            width: 100%; max-width: 380px; overflow: hidden;
+        }
+        .card-header {
+            background: #2c3e50; color: white;
+            padding: 28px 36px 22px; text-align: center;
+        }
+        .card-header h1 { font-size: 1.1em; margin-bottom: 4px; }
+        .card-header p  { font-size: 0.78em; opacity: 0.65; }
+        .card-body { padding: 28px 36px 32px; }
+        label {
+            display: block; font-weight: 600;
+            font-size: 0.83em; color: #2c3e50; margin-bottom: 5px;
+        }
+        input {
+            width: 100%; padding: 11px 13px;
+            border: 2px solid #dfe6e9; border-radius: 8px;
+            font-size: 0.95em; font-family: inherit;
+            margin-bottom: 16px; transition: border-color 0.2s;
+        }
+        input:focus { outline: none; border-color: #2c3e50; }
+        button {
+            width: 100%; padding: 12px;
+            background: #2c3e50; color: white;
+            border: none; border-radius: 8px;
+            font-size: 1em; font-weight: 600;
+            cursor: pointer; font-family: inherit;
+            transition: background 0.2s;
+        }
+        button:hover { background: #3d5166; }
+        .error {
+            background: #f8d7da; color: #721c24;
+            border: 1px solid #f5c6cb; border-radius: 8px;
+            padding: 10px 13px; font-size: 0.83em;
+            margin-bottom: 16px; display: none;
+        }
+        .error.visible { display: block; }
+        .foot { text-align: center; font-size: 0.72em; color: #b2bec3; margin-top: 14px; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+        <h1>Panel del Profesor</h1>
+        <p>Evaluación ISO 27001 – Infokey</p>
+    </div>
+    <div class="card-body">
+        <div class="error" id="err">Correo o contraseña incorrectos.</div>
+        <form action="/api/admin/login" method="POST">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email"
+                   placeholder="correo@ejemplo.com"
+                   required autofocus autocomplete="username">
+
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password"
+                   placeholder="••••••••••"
+                   required autocomplete="current-password">
+
+            <button type="submit">Ingresar</button>
+        </form>
+        <p class="foot">Acceso exclusivo para el profesor evaluador.</p>
+    </div>
+</div>
+<script>
+    if (new URLSearchParams(location.search).get('error')) {
+        document.getElementById('err').classList.add('visible');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados – ISO 27001</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f6; color: #333;
+            padding: 24px 16px 60px;
+        }
+        .container { max-width: 780px; margin: 0 auto; }
+
+        /* ── Cabecera ── */
+        .result-header {
+            background: #2c3e50; color: white;
+            border-radius: 10px; padding: 24px 28px;
+            margin-bottom: 24px;
+            display: flex; flex-wrap: wrap;
+            justify-content: space-between; align-items: center;
+            gap: 16px;
+        }
+        .result-header h1 { font-size: 1.2em; margin-bottom: 4px; }
+        .result-header .meta { font-size: 0.82em; opacity: 0.78; }
+
+        .badge {
+            padding: 10px 24px; border-radius: 30px;
+            font-size: 1.2em; font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .badge.aprobado { background: #27ae60; color: white; }
+        .badge.reprobado { background: #e74c3c; color: white; }
+
+        /* ── Score ── */
+        .score-box {
+            background: white; border-radius: 10px;
+            padding: 20px 28px; margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+        }
+        .score-num {
+            font-size: 3em; font-weight: 700;
+            line-height: 1;
+        }
+        .score-num.ok  { color: #27ae60; }
+        .score-num.nok { color: #e74c3c; }
+        .score-info { font-size: 0.88em; color: #666; }
+        .score-info strong { color: #333; }
+        .progress-bar {
+            flex: 1; min-width: 180px;
+            height: 12px; background: #dfe6e9;
+            border-radius: 6px; overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%; border-radius: 6px;
+            transition: width 1s ease;
+        }
+        .progress-fill.ok  { background: #27ae60; }
+        .progress-fill.nok { background: #e74c3c; }
+
+        /* ── Detalle preguntas ── */
+        .section-title {
+            font-size: 0.85em; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px;
+            color: #777; margin-bottom: 12px;
+        }
+        .q-card {
+            background: white; border-radius: 8px;
+            padding: 16px 18px; margin-bottom: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            border-left: 5px solid #dfe6e9;
+        }
+        .q-card.pass { border-color: #27ae60; }
+        .q-card.fail { border-color: #e74c3c; }
+
+        .q-top {
+            display: flex; align-items: flex-start;
+            justify-content: space-between; gap: 12px;
+            margin-bottom: 8px;
+        }
+        .q-text { font-size: 0.88em; color: #444; flex: 1; }
+        .q-icon { font-size: 1.3em; flex-shrink: 0; }
+
+        .q-answers {
+            display: flex; gap: 16px; flex-wrap: wrap;
+            font-size: 0.82em; margin-bottom: 8px;
+        }
+        .ans-chip {
+            padding: 2px 10px; border-radius: 12px;
+            font-weight: 600;
+        }
+        .ans-chip.sent  { background: #dfe6e9; color: #555; }
+        .ans-chip.sent.wrong { background: #fdecea; color: #c0392b; }
+        .ans-chip.correct-ans { background: #d5f5e3; color: #1e8449; }
+
+        .q-feedback {
+            font-size: 0.8em; color: #555;
+            background: #f8f9fa; border-radius: 6px;
+            padding: 8px 10px; line-height: 1.5;
+        }
+
+        /* ── Footer ── */
+        .actions {
+            text-align: center; margin-top: 32px;
+        }
+        .btn-salir {
+            padding: 12px 36px; background: #2c3e50;
+            color: white; border: none; border-radius: 8px;
+            font-size: 1em; font-weight: 600; cursor: pointer;
+            font-family: inherit;
+        }
+        .btn-salir:hover { background: #3d5166; }
+
+        .loading { text-align: center; padding: 80px 0; color: #888; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="loading" class="loading">Cargando resultados...</div>
+    <div id="content" style="display:none"></div>
+</div>
+
+<script>
+fetch('/api/resultado')
+    .then(r => { if (!r.ok) throw r; return r.json(); })
+    .then(data => renderResultados(data))
+    .catch(() => { location.href = '/'; });
+
+function renderResultados(data) {
+    const { usuario, puntaje, total, aprobado, detalle, minimo } = data;
+    const pct  = Math.round((puntaje / total) * 100);
+    const ok   = aprobado;
+
+    const content = document.getElementById('content');
+    content.innerHTML = `
+        <div class="result-header">
+            <div>
+                <h1>${usuario.nombre}</h1>
+                <div class="meta">Documento: ${usuario.documento} &nbsp;|&nbsp; ${new Date().toLocaleDateString('es-CO',{day:'2-digit',month:'long',year:'numeric'})}</div>
+            </div>
+            <div class="badge ${ok ? 'aprobado' : 'reprobado'}">${ok ? 'APROBADO' : 'REPROBADO'}</div>
+        </div>
+
+        <div class="score-box">
+            <div class="score-num ${ok ? 'ok' : 'nok'}">${puntaje}<span style="font-size:0.45em;color:#aaa"> / ${total}</span></div>
+            <div>
+                <div class="score-info"><strong>${pct}%</strong> de aciertos</div>
+                <div class="score-info">Mínimo para aprobar: <strong>${minimo}/${total}</strong></div>
+                <div class="progress-bar" style="margin-top:8px">
+                    <div class="progress-fill ${ok ? 'ok' : 'nok'}" style="width:${pct}%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">Detalle por pregunta</div>
+        ${detalle.map(d => `
+            <div class="q-card ${d.aprobada ? 'pass' : 'fail'}">
+                <div class="q-top">
+                    <div class="q-text"><strong>Pregunta ${d.pregunta}.</strong> ${d.texto}</div>
+                    <div class="q-icon">${d.aprobada ? '✅' : '❌'}</div>
+                </div>
+                <div class="q-answers">
+                    <span class="ans-chip sent ${!d.aprobada ? 'wrong' : ''}">
+                        Tu respuesta: ${d.enviada || '—'}
+                    </span>
+                    ${!d.aprobada ? `<span class="ans-chip correct-ans">Correcta: ${d.correcta}</span>` : ''}
+                </div>
+                <div class="q-feedback">${d.feedback}</div>
+            </div>
+        `).join('')}
+
+        <div class="actions">
+            <button class="btn-salir" onclick="location.href='/salir'">Finalizar y salir</button>
+        </div>
+    `;
+
+    document.getElementById('loading').style.display = 'none';
+    content.style.display = 'block';
+}
+</script>
+</body>
+</html>

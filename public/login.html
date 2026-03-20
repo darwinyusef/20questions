@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso – Evaluación ISO 27001</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+            width: 100%;
+            max-width: 420px;
+            overflow: hidden;
+        }
+        .card-header {
+            background: #2c3e50;
+            color: white;
+            padding: 28px 36px 22px;
+            text-align: center;
+        }
+        .card-header h1 { font-size: 1.2em; margin-bottom: 5px; }
+        .card-header p  { font-size: 0.8em; opacity: 0.75; }
+        .card-body { padding: 28px 36px 32px; }
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+        .hint { font-weight: normal; color: #999; margin-left: 4px; }
+        input[type="text"] {
+            width: 100%;
+            padding: 11px 13px;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            font-size: 0.97em;
+            font-family: inherit;
+            margin-bottom: 18px;
+            transition: border-color 0.2s;
+        }
+        input[name="nombre"] { text-transform: uppercase; letter-spacing: 0.3px; }
+        input:focus { outline: none; border-color: #2c3e50; }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+        button:hover { background: #3d5166; }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 10px 13px;
+            font-size: 0.84em;
+            margin-bottom: 16px;
+            display: none;
+        }
+        .error.visible { display: block; }
+        .foot { text-align: center; font-size: 0.74em; color: #b2bec3; margin-top: 16px; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+        <h1>Evaluación de Seguridad</h1>
+        <p>ISO 27001 – Controles Físicos y Tecnológicos</p>
+    </div>
+    <div class="card-body">
+        <div class="error" id="err"></div>
+        <form action="/ingresar" method="POST">
+            <label for="nombre">
+                Nombre completo
+                <span class="hint">tal como aparece en la lista</span>
+            </label>
+            <input type="text" id="nombre" name="nombre"
+                   placeholder="APELLIDO APELLIDO NOMBRE"
+                   maxlength="100" required autofocus autocomplete="off">
+
+            <label for="documento">
+                N° de documento
+                <span class="hint">contraseña de acceso</span>
+            </label>
+            <input type="text" id="documento" name="documento"
+                   placeholder="Ej: 1002345678"
+                   maxlength="20" required autocomplete="off"
+                   inputmode="numeric">
+
+            <button type="submit">Ingresar al cuestionario</button>
+        </form>
+        <p class="foot">Escribe tu nombre en mayúsculas sin tildes.</p>
+    </div>
+</div>
+<script>
+    const p = new URLSearchParams(location.search);
+    const msgs = {
+        vacio:        'Por favor completa todos los campos.',
+        noregistrado: 'Nombre no encontrado. Verifica cómo está escrito.',
+        cedula:       'Cédula incorrecta. Verifica tu número de documento.',
+    };
+    const e = p.get('error');
+    if (e && msgs[e]) {
+        const el = document.getElementById('err');
+        el.textContent = msgs[e];
+        el.classList.add('visible');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+[
+  {
+    "id": 1,
+    "texto": "¿Cuál es el objetivo principal de establecer perímetros de seguridad física?",
+    "opciones": [
+      { "letra": "A", "texto": "Mejorar la estética de las oficinas centrales." },
+      { "letra": "B", "texto": "Proteger las instalaciones y el equipo contra el acceso no autorizado y daños." },
+      { "letra": "C", "texto": "Reducir el consumo de energía eléctrica del edificio." },
+      { "letra": "D", "texto": "Facilitar el acceso de extraños a las áreas de servidores." }
+    ],
+    "feedback": "Los perímetros de seguridad física protegen instalaciones y equipos contra accesos no autorizados y posibles daños."
+  },
+  {
+    "id": 2,
+    "texto": "¿Qué se debe hacer con las ventanas en áreas desatendidas?",
+    "opciones": [
+      { "letra": "A", "texto": "Deben cerrarse con llave, especialmente si están a nivel del suelo." },
+      { "letra": "B", "texto": "Deben permanecer abiertas para mejorar la ventilación." },
+      { "letra": "C", "texto": "Solo deben cerrarse si hay objetos de valor a la vista." },
+      { "letra": "D", "texto": "Deben cubrirse con papel periódico." }
+    ],
+    "feedback": "Cerrar con llave las ventanas, especialmente las de nivel de suelo, previene intrusiones físicas al área de trabajo."
+  },
+  {
+    "id": 3,
+    "texto": "En 'Escritorio y pantalla despejada', ¿cuál es una práctica recomendada?",
+    "opciones": [
+      { "letra": "A", "texto": "Dejar contraseñas en un post-it pegado al monitor." },
+      { "letra": "B", "texto": "Mantener documentos confidenciales apilados sobre el escritorio." },
+      { "letra": "C", "texto": "Bloquear la sesión de la computadora al levantarse del puesto." },
+      { "letra": "D", "texto": "Compartir la pantalla con extraños." }
+    ],
+    "feedback": "Bloquear la sesión impide que terceros accedan a información confidencial cuando el puesto queda desatendido, aunque sea por poco tiempo."
+  },
+  {
+    "id": 4,
+    "texto": "¿Qué medida se debe tomar al ingresar visitantes?",
+    "opciones": [
+      { "letra": "A", "texto": "Permitirles explorar las instalaciones libremente." },
+      { "letra": "B", "texto": "Registrar entrada/salida y supervisarlos en todo momento." },
+      { "letra": "C", "texto": "Pedirles que cuiden el centro de datos." },
+      { "letra": "D", "texto": "No pedirles ninguna identificación." }
+    ],
+    "feedback": "Registrar y supervisar a los visitantes en todo momento garantiza el control de acceso físico y la trazabilidad de quién ingresa a las instalaciones."
+  },
+  {
+    "id": 5,
+    "texto": "¿Para qué sirve el enmascaramiento de datos?",
+    "opciones": [
+      { "letra": "A", "texto": "Para borrar permanentemente la base de datos." },
+      { "letra": "B", "texto": "Ocultar información sensible usando datos ficticios en entornos de prueba." },
+      { "letra": "C", "texto": "Para cambiar el color de las letras en Excel." },
+      { "letra": "D", "texto": "Para ocultar la hora del sistema." }
+    ],
+    "feedback": "El enmascaramiento de datos sustituye datos reales por ficticios en entornos de desarrollo o prueba, protegiendo la información sensible sin detener el trabajo."
+  },
+  {
+    "id": 6,
+    "texto": "¿Qué es el 'principio de privilegio mínimo'?",
+    "opciones": [
+      { "letra": "A", "texto": "Darle a todos los empleados acceso de administrador para evitar problemas." },
+      { "letra": "B", "texto": "Otorgar a un usuario solo los permisos necesarios para realizar sus tareas." },
+      { "letra": "C", "texto": "Permitir que el jefe tenga acceso a todas las redes sociales." },
+      { "letra": "D", "texto": "Quitarle el acceso a internet a toda la empresa permanentemente." }
+    ],
+    "feedback": "El privilegio mínimo limita los permisos a lo estrictamente necesario para cada rol, reduciendo significativamente la superficie de ataque."
+  },
+  {
+    "id": 7,
+    "texto": "¿Cuál es una función de las herramientas de prevención de fuga de datos (DLP)?",
+    "opciones": [
+      { "letra": "A", "texto": "Aumentar la velocidad de descarga de archivos de video." },
+      { "letra": "B", "texto": "Identificar y bloquear la transferencia no autorizada de información sensible." },
+      { "letra": "C", "texto": "Crear copias de seguridad de las fotos personales del personal." },
+      { "letra": "D", "texto": "Enviar correos masivos de publicidad a los clientes." }
+    ],
+    "feedback": "Las herramientas DLP monitorizan y bloquean activamente la transferencia no autorizada de datos sensibles fuera de la organización."
+  },
+  {
+    "id": 8,
+    "texto": "¿Por qué es importante la segregación de redes?",
+    "opciones": [
+      { "letra": "A", "texto": "Para evitar que una amenaza se propague lateralmente por toda la infraestructura." },
+      { "letra": "B", "texto": "Para que el internet sea más lento en las áreas de descanso." },
+      { "letra": "C", "texto": "Para que los cables se vean más ordenados en el rack." },
+      { "letra": "D", "texto": "Para obligar a los empleados a usar solo una aplicación por red." }
+    ],
+    "feedback": "Segregar la red contiene las amenazas dentro de segmentos, evitando que un atacante se mueva lateralmente por toda la infraestructura."
+  },
+  {
+    "id": 9,
+    "texto": "¿Qué se debe verificar antes de reutilizar o eliminar un equipo tecnológico?",
+    "opciones": [
+      { "letra": "A", "texto": "Que el equipo tenga pegatinas decorativas nuevas." },
+      { "letra": "B", "texto": "Que la batería esté cargada al 100%." },
+      { "letra": "C", "texto": "Que los medios de almacenamiento hayan sido borrados de forma segura o destruidos." },
+      { "letra": "D", "texto": "Que el mouse funcione perfectamente." }
+    ],
+    "feedback": "Antes de reutilizar o desechar un equipo, sus medios de almacenamiento deben sanearse o destruirse físicamente para evitar fuga de datos residuales."
+  },
+  {
+    "id": 10,
+    "texto": "¿Cuál es una recomendación para el uso de dispositivos de punto final en lugares públicos?",
+    "opciones": [
+      { "letra": "A", "texto": "Compartir la red Wi-Fi abierta con cualquier persona." },
+      { "letra": "B", "texto": "Dejar la laptop en la mesa mientras se va al baño." },
+      { "letra": "C", "texto": "Usar filtros de privacidad en la pantalla y no dejar el equipo desatendido." },
+      { "letra": "D", "texto": "Gritar la contraseña en voz alta para que el sistema la reconozca." }
+    ],
+    "feedback": "Los filtros de privacidad impiden el espionaje visual (shoulder surfing) y nunca debe dejarse el equipo desatendido en espacios públicos."
+  },
+  {
+    "id": 11,
+    "texto": "¿Qué control ayuda a detectar un incendio en etapas tempranas?",
+    "opciones": [
+      { "letra": "A", "texto": "Detectores de humo y sistemas de alarma contra incendios monitoreados." },
+      { "letra": "B", "texto": "Un balde de agua en cada esquina de la oficina." },
+      { "letra": "C", "texto": "Dejar las ventanas abiertas para que salga el calor." },
+      { "letra": "D", "texto": "Instalar solo computadoras que no se calienten." }
+    ],
+    "feedback": "Los detectores de humo y los sistemas de alarma monitoreados permiten detectar y actuar ante un incendio en sus etapas más tempranas, minimizando daños."
+  },
+  {
+    "id": 12,
+    "texto": "¿Cuál es el propósito de la sincronización del reloj (clock) en los sistemas?",
+    "opciones": [
+      { "letra": "A", "texto": "Para que los empleados no lleguen tarde a las reuniones." },
+      { "letra": "B", "texto": "Asegurar que los registros (logs) tengan una marca de tiempo precisa para auditorías." },
+      { "letra": "C", "texto": "Para que la computadora sea más rápida al procesar datos." },
+      { "letra": "D", "texto": "Para cambiar automáticamente el fondo de pantalla según la hora." }
+    ],
+    "feedback": "La sincronización del reloj asegura marcas de tiempo confiables y consistentes en todos los logs, lo que es fundamental para investigaciones y auditorías forenses."
+  },
+  {
+    "id": 13,
+    "texto": "¿Por qué se deben proteger físicamente los cables de red?",
+    "opciones": [
+      { "letra": "A", "texto": "Para que no se ensucien con el polvo del suelo." },
+      { "letra": "B", "texto": "Para evitar daños accidentales, interferencias o sabotaje en la transmisión de datos." },
+      { "letra": "C", "texto": "Para que los cables amarillos no se mezclen con los azules." },
+      { "letra": "D", "texto": "Para aumentar la resistencia eléctrica de la red." }
+    ],
+    "feedback": "Proteger físicamente el cableado evita daños accidentales, interferencias electromagnéticas deliberadas y actos de sabotaje que interrumpirían la transmisión de datos."
+  },
+  {
+    "id": 14,
+    "texto": "¿Qué acción es fundamental en la gestión de copias de seguridad?",
+    "opciones": [
+      { "letra": "A", "texto": "Hacer la copia solo una vez al año para no gastar espacio." },
+      { "letra": "B", "texto": "Guardar el disco de respaldo justo encima del servidor principal." },
+      { "letra": "C", "texto": "Probar periódicamente la restauración de los datos para asegurar que funcionen." },
+      { "letra": "D", "texto": "Borrar la copia original una vez que se termina el respaldo." }
+    ],
+    "feedback": "Probar periódicamente la restauración es esencial para validar que los backups son funcionales y que los datos son realmente recuperables cuando se necesiten."
+  },
+  {
+    "id": 15,
+    "texto": "¿Cuál es la función principal de un Sistema de Alimentación Ininterrumpida (UPS/SAI)?",
+    "opciones": [
+      { "letra": "A", "texto": "Proporcionar energía temporal durante un fallo eléctrico para un apagado seguro." },
+      { "letra": "B", "texto": "Hacer que el internet sea inalámbrico en toda la oficina." },
+      { "letra": "C", "texto": "Ahorrar dinero en la factura de la luz apagando los focos." },
+      { "letra": "D", "texto": "Detectar si hay virus en los correos electrónicos." }
+    ],
+    "feedback": "El UPS/SAI suministra energía eléctrica temporal durante un fallo para permitir un apagado ordenado de los sistemas sin pérdida ni corrupción de datos."
+  },
+  {
+    "id": 16,
+    "texto": "¿Qué se busca con el control de 'Acceso al código fuente'?",
+    "opciones": [
+      { "letra": "A", "texto": "Permitir que todos los clientes vean cómo se programó la aplicación." },
+      { "letra": "B", "texto": "Vender el código en internet para obtener ganancias extra." },
+      { "letra": "C", "texto": "Restringir quién puede leer o modificar las instrucciones lógicas de los sistemas." },
+      { "letra": "D", "texto": "Hacer que el código sea más difícil de leer para los programadores." }
+    ],
+    "feedback": "Controlar el acceso al código fuente protege la propiedad intelectual de la organización y evita modificaciones maliciosas o no autorizadas a los sistemas."
+  },
+  {
+    "id": 17,
+    "texto": "¿Qué es la 'Defensa en Profundidad' en seguridad?",
+    "opciones": [
+      { "letra": "A", "texto": "Poner los servidores en el sótano más profundo del edificio." },
+      { "letra": "B", "texto": "Implementar múltiples capas de seguridad para que si una falla, otra proteja el activo." },
+      { "letra": "C", "texto": "Contratar guardias que sepan bucear." },
+      { "letra": "D", "texto": "Tener solo una contraseña muy larga pero ningún otro control." }
+    ],
+    "feedback": "La Defensa en Profundidad superpone múltiples capas de control: si una capa es vulnerada, las capas siguientes continúan protegiendo el activo crítico."
+  },
+  {
+    "id": 18,
+    "texto": "¿Por qué no se deben usar cuentas genéricas como 'admin' o 'root' a diario?",
+    "opciones": [
+      { "letra": "A", "texto": "Porque son palabras muy difíciles de escribir correctamente." },
+      { "letra": "B", "texto": "Porque el sistema se vuelve más lento si muchos usan el mismo nombre." },
+      { "letra": "C", "texto": "Porque esas cuentas no pueden usar el correo electrónico." },
+      { "letra": "D", "texto": "Porque impiden identificar qué persona realizó una acción (falta de trazabilidad)." }
+    ],
+    "feedback": "Las cuentas genéricas compartidas impiden la trazabilidad: ante un incidente es imposible determinar qué persona específica realizó cada acción en el sistema."
+  },
+  {
+    "id": 20,
+    "texto": "¿Qué significa que un control sea 'Preventivo'?",
+    "opciones": [
+      { "letra": "A", "texto": "Que su función es evitar que ocurra un incidente antes de que pase." },
+      { "letra": "B", "texto": "Que solo se usa después de que el sistema ya falló." },
+      { "letra": "C", "texto": "Que sirve para avisar que algo malo está pasando." },
+      { "letra": "D", "texto": "Que no tiene utilidad real." }
+    ],
+    "feedback": "Un control preventivo actúa proactivamente para evitar que ocurra un incidente de seguridad, a diferencia de los controles detectivos (que alertan) o correctivos (que reparan)."
+  }
+]

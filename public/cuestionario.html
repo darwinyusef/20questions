@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario – Seguridad ISO 27001</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+
+        /* ── Overlays ────────────────────────────────────────── */
+        .overlay {
+            position: fixed; inset: 0; z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 18px;
+            text-align: center; padding: 24px;
+        }
+        .overlay.oculto { display: none; }
+
+        #ov-inicio  { background: #2c3e50; color: white; }
+        #ov-bloqueo { background: rgba(160,0,0,0.97); color: white; z-index: 10000; }
+        #ov-anulado { background: #1a1a2e; color: white; z-index: 10001; }
+        #ov-completado { background: #1a3a1a; color: white; z-index: 10002; }
+
+        .ov-titulo  { font-size: 1.55em; font-weight: 700; margin: 0; }
+        .ov-caja {
+            background: rgba(255,255,255,0.1); border-radius: 10px;
+            padding: 18px 26px; max-width: 480px; width: 100%;
+            font-size: 0.9em; line-height: 1.75;
+        }
+        .ov-caja strong { color: #f39c12; }
+        .ov-advertencia { font-size: 0.74em; opacity: 0.6; max-width: 420px; }
+
+        .btn-verde {
+            padding: 13px 38px; background: #27ae60; color: white;
+            border: none; border-radius: 8px; font-size: 1.05em;
+            font-weight: 700; cursor: pointer; font-family: inherit;
+            transition: background 0.2s;
+        }
+        .btn-verde:hover { background: #219150; }
+
+        /* bloqueo */
+        #codigo-input {
+            padding: 10px 16px; border-radius: 8px;
+            border: 2px solid white; background: transparent;
+            color: white; font-size: 1.3em; letter-spacing: 4px;
+            text-align: center; width: 200px; font-family: monospace;
+            text-transform: uppercase;
+        }
+        #codigo-input::placeholder { color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+        #btn-desbloquear {
+            padding: 11px 28px; background: white; color: #c0392b;
+            border: none; border-radius: 8px; font-size: 1em;
+            font-weight: 700; cursor: pointer; font-family: inherit;
+        }
+        #codigo-error { font-size: 0.8em; color: #ffd6d6; min-height: 18px; }
+
+        /* ── Body / Quiz ─────────────────────────────────────── */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6; color: #333;
+            max-width: 800px; margin: 0 auto;
+            padding: 20px; padding-bottom: 90px;
+            background: #f4f7f6;
+        }
+        header {
+            text-align: center; padding: 20px;
+            background: #2c3e50; color: white;
+            border-radius: 8px; margin-bottom: 30px;
+            position: relative;
+        }
+        header h1 { margin: 0 0 4px; font-size: 1.4em; }
+        header p  { margin: 0; font-size: 0.85em; opacity: 0.8; }
+
+        /* Timer */
+        #timer-box {
+            position: absolute; top: 10px; left: 14px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 8px; padding: 4px 12px; min-width: 80px;
+        }
+        #timer-label   { font-size: 0.6em; opacity: 0.75; display: block; }
+        #timer-display {
+            font-size: 1.5em; font-weight: 700;
+            font-family: 'Courier New', monospace; letter-spacing: 2px;
+        }
+        #timer-display.warning  { color: #f39c12; }
+        #timer-display.critical { color: #e74c3c; animation: blink 1s step-start infinite; }
+        @keyframes blink { 50% { opacity: 0.3; } }
+
+        /* User bar */
+        .user-bar {
+            position: absolute; top: 10px; right: 14px;
+            font-size: 0.75em; text-align: right;
+        }
+        .user-bar span { display: block; }
+        .user-bar a {
+            color: #a0c4e0; text-decoration: none;
+            border: 1px solid #a0c4e0; border-radius: 4px;
+            padding: 1px 7px; margin-top: 4px; display: inline-block;
+        }
+        .user-bar a:hover { background: rgba(255,255,255,0.15); }
+
+        /* Preguntas */
+        #quiz-loading {
+            text-align: center; padding: 60px 0;
+            color: #888; font-size: 1em;
+        }
+        .question-card {
+            background: white; padding: 20px;
+            margin-bottom: 20px; border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.09);
+        }
+        .question-text {
+            font-weight: 700; font-size: 1.05em;
+            margin-bottom: 14px; color: #2c3e50;
+        }
+        .options { list-style: none; padding: 0; margin: 0; }
+        .option-item {
+            display: flex; align-items: center;
+            margin-bottom: 10px; padding: 10px 12px;
+            border: 2px solid #dfe6e9; border-radius: 10px;
+            cursor: pointer; transition: all 0.15s ease;
+            user-select: none;
+        }
+        .option-item:hover { background: #f0f3f5; border-color: #b2bec3; }
+
+        /* Seleccionada: un solo estilo, no cambia */
+        .option-item.selected {
+            background: #eaf2fb; border-color: #2c3e50;
+            cursor: default; pointer-events: none;
+        }
+        .option-item.selected .opt-circle {
+            background: #2c3e50; color: white; border-color: #2c3e50;
+        }
+        /* Bloquear demás opciones tras responder */
+        .question-card.answered .option-item:not(.selected) {
+            cursor: default; pointer-events: none; opacity: 0.5;
+        }
+        .opt-circle {
+            width: 28px; height: 28px; border-radius: 50%;
+            border: 2px solid #636e72; display: flex;
+            align-items: center; justify-content: center;
+            margin-right: 13px; font-weight: bold;
+            font-size: 0.85em; flex-shrink: 0; background: white;
+        }
+
+        footer {
+            text-align: center; margin-top: 40px;
+            font-size: 0.8em; color: #777;
+        }
+
+        /* ── Panel flotante ──────────────────────────────────── */
+        #panel {
+            position: fixed; bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 660px; max-width: 96vw;
+            background: white;
+            border: 2px solid #2c3e50; border-bottom: none;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.18);
+            z-index: 1000;
+        }
+        #panel-header {
+            background: #2c3e50; color: white;
+            padding: 10px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-radius: 8px 8px 0 0; cursor: pointer; user-select: none;
+        }
+        #panel-header h3 { margin: 0; font-size: 0.9em; }
+        .panel-right { display: flex; align-items: center; gap: 12px; }
+        #progress-label { font-size: 0.8em; opacity: 0.85; }
+        #toggle-btn {
+            background: none; border: 2px solid white; color: white;
+            border-radius: 5px; padding: 2px 10px; cursor: pointer;
+            font-size: 0.85em; font-weight: bold;
+        }
+        #panel-body { display: none; padding: 14px 18px 16px; }
+        #panel-body.open { display: block; }
+
+        .omr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 7px 16px; margin-bottom: 14px;
+        }
+        .omr-row  { display: flex; align-items: center; gap: 6px; }
+        .omr-num  { font-size: 0.78em; font-weight: bold; color: #555; width: 22px; text-align: right; }
+        .omr-circle {
+            width: 22px; height: 22px; border-radius: 50%;
+            border: 2px solid #bbb;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: bold; color: #bbb;
+        }
+        .omr-circle.filled { background: #2c3e50; border-color: #2c3e50; color: white; }
+
+        #submit-btn {
+            width: 100%; padding: 11px;
+            background: #27ae60; color: white;
+            border: none; border-radius: 8px;
+            font-size: 1em; font-weight: 700;
+            cursor: pointer; font-family: inherit;
+        }
+        #submit-btn:disabled { background: #b2bec3; cursor: not-allowed; }
+        #submit-btn.ready { animation: pulse 1.5s infinite; }
+        @keyframes pulse {
+            0%,100% { box-shadow: 0 0 0 0 rgba(39,174,96,0.45); }
+            50%      { box-shadow: 0 0 0 7px rgba(39,174,96,0); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── Overlay: inicio ───────────────────────────────── -->
+<div id="ov-inicio" class="overlay">
+    <p class="ov-titulo">Evaluación de Seguridad ISO 27001</p>
+    <div class="ov-caja">
+        <div id="ov-info-usuario" style="margin-bottom:10px;font-size:1.05em;">Cargando...</div>
+        <strong>Instrucciones:</strong><br>
+        • Tienes <strong>45 minutos</strong> para responder.<br>
+        • Lee cada pregunta y selecciona UNA respuesta.<br>
+        • Una vez marcada, <strong>no podrás cambiarla.</strong><br>
+        • No cierres ni cambies de pestaña durante la evaluación.<br>
+        • Al responder todas, el botón de envío se activará.
+    </div>
+    <button class="btn-verde" id="btn-comenzar" onclick="comenzar()">Comenzar evaluación</button>
+    <p class="ov-advertencia">
+        Cambiar de pestaña o ventana queda registrado como intento de trampa
+        y puede bloquear o anular tu evaluación.
+    </p>
+</div>
+
+<!-- ── Overlay: bloqueado ────────────────────────────── -->
+<div id="ov-bloqueo" class="overlay oculto">
+    <p class="ov-titulo">🔒 Evaluación Bloqueada</p>
+    <div class="ov-caja" id="bloqueo-info">Cargando...</div>
+    <input id="codigo-input" type="text" maxlength="6"
+           placeholder="CÓDIGO" autocomplete="off"
+           oninput="this.value=this.value.toUpperCase()">
+    <button id="btn-desbloquear" onclick="intentarDesbloquear()">Desbloquear</button>
+    <div id="codigo-error"></div>
+</div>
+
+<!-- ── Overlay: anulado ──────────────────────────────── -->
+<div id="ov-anulado" class="overlay oculto">
+    <p class="ov-titulo">⛔ Evaluación Anulada</p>
+    <p style="max-width:400px;opacity:.85">
+        Tu evaluación fue anulada por múltiples intentos de trampa detectados.<br>
+        Comunícate con el profesor para más información.
+    </p>
+    <button class="btn-verde" onclick="location.href='/salir'">Salir</button>
+</div>
+
+<!-- ── Overlay: ya completado ────────────────────────── -->
+<div id="ov-completado" class="overlay oculto">
+    <p class="ov-titulo">✅ Evaluación Ya Realizada</p>
+    <p style="max-width:420px;opacity:.85">
+        Ya completaste esta evaluación. No es posible realizarla nuevamente.<br>
+        Puedes consultar tus resultados a continuación.
+    </p>
+    <button class="btn-verde" onclick="location.href='/resultados'">Ver mis resultados</button>
+</div>
+
+<!-- ── Página principal ──────────────────────────────── -->
+<header>
+    <div id="timer-box">
+        <span id="timer-label">TIEMPO</span>
+        <span id="timer-display">45:00</span>
+    </div>
+    <div class="user-bar">
+        <span id="user-name">...</span>
+        <a href="/salir">Salir</a>
+    </div>
+    <h1>Evaluación de Seguridad ISO 27001</h1>
+    <p>Protocolos Físicos y Tecnológicos</p>
+</header>
+
+<div id="quiz-loading">Cargando preguntas...</div>
+<div id="quiz"></div>
+
+<footer><p>Basado en protocolos de seguridad física y tecnológica – 2026</p></footer>
+
+<!-- ── Panel flotante ───────────────────────────────── -->
+<div id="panel">
+    <div id="panel-header" onclick="togglePanel()">
+        <h3>Hoja de Respuestas</h3>
+        <div class="panel-right">
+            <span id="progress-label">0 / 0 respondidas</span>
+            <button id="toggle-btn">▲ Expandir</button>
+        </div>
+    </div>
+    <div id="panel-body">
+        <div class="omr-grid" id="omr-grid"></div>
+        <button id="submit-btn" disabled onclick="enviarRespuestas()">
+            Responde todas las preguntas para enviar
+        </button>
+    </div>
+</div>
+
+<script>
+// ── Estado global ────────────────────────────────────────────────────
+let PREGUNTAS      = [];
+let answers        = {};
+let quizActivo     = false;
+let trampaEnCurso  = false;
+let timerInterval  = null;
+let segundos       = 45 * 60;
+let USUARIO        = null;
+let pageClosing    = false;   // true cuando el usuario está cerrando la pestaña
+
+// ── Boot ─────────────────────────────────────────────────────────────
+(async () => {
+    // 1. Usuario
+    let usuario;
+    try {
+        const r = await fetch('/api/yo');
+        if (!r.ok) throw r;
+        usuario = await r.json();
+    } catch { return location.href = '/'; }
+
+    USUARIO = usuario;
+    document.getElementById('user-name').textContent   = usuario.nombre;
+    document.getElementById('ov-info-usuario').innerHTML =
+        `<strong>${usuario.nombre}</strong><br>Documento: ${usuario.documento}`;
+
+    // 2. Estado
+    const estado = await fetch('/api/estado').then(r => r.json());
+
+    if (estado.estado === 'anulado') {
+        return mostrarOverlay('ov-anulado');
+    }
+    if (estado.estado === 'completado') {
+        return mostrarOverlay('ov-completado');
+    }
+    // 3. Cargar preguntas desde API
+    try {
+        const rp = await fetch('/api/preguntas');
+        if (!rp.ok) throw rp;
+        PREGUNTAS = await rp.json();
+    } catch { return location.href = '/'; }
+
+    // 4. Renderizar
+    renderizarQuiz();
+    buildOMR();
+
+    // 5. Restaurar progreso guardado
+    let progreso = { respuestas: {}, segundos_restantes: 45 * 60, iniciado: false };
+    try {
+        const rg = await fetch('/api/progreso');
+        if (rg.ok) progreso = await rg.json();
+    } catch { /* sin progreso previo */ }
+
+    // Restaurar respuestas guardadas
+    if (progreso.respuestas && Object.keys(progreso.respuestas).length > 0) {
+        Object.entries(progreso.respuestas).forEach(([q, letra]) => {
+            answers[q] = letra;
+            const card = document.querySelector(`.question-card[data-q="${q}"]`);
+            if (card) {
+                const item = card.querySelector(`.option-item[data-letra="${letra}"]`);
+                if (item) {
+                    item.classList.add('selected');
+                    card.classList.add('answered');
+                }
+            }
+            document.getElementById(`omr-${q}-${letra}`)?.classList.add('filled');
+        });
+        actualizarProgreso();
+    }
+
+    // Restaurar tiempo
+    if (progreso.segundos_restantes != null) {
+        segundos = progreso.segundos_restantes;
+        mostrarTimer(segundos);
+    }
+
+    // 6. Registrar anti-trampa siempre (incluso si está bloqueado)
+    activarAntiTrampa();
+
+    // 7. Mostrar overlay según estado
+    if (estado.estado === 'bloqueado') {
+        mostrarBloqueo(estado.bloqueo, estado.total);
+    } else if (progreso.iniciado) {
+        quizActivo = true;
+        iniciarTimer();
+    } else {
+        mostrarOverlay('ov-inicio');
+    }
+})();
+
+// ── Renderizar preguntas desde JSON ──────────────────────────────────
+function renderizarQuiz() {
+    document.getElementById('quiz-loading').style.display = 'none';
+    const container = document.getElementById('quiz');
+
+    PREGUNTAS.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.dataset.q = p.id;
+
+        const titulo = document.createElement('div');
+        titulo.className = 'question-text';
+        titulo.textContent = `${p.id}. ${p.texto}`;
+        card.appendChild(titulo);
+
+        const ul = document.createElement('ul');
+        ul.className = 'options';
+
+        p.opciones.forEach(op => {
+            const li = document.createElement('li');
+            li.className  = 'option-item';
+            li.dataset.q  = p.id;
+            li.dataset.letra = op.letra;
+
+            const circle = document.createElement('span');
+            circle.className  = 'opt-circle';
+            circle.textContent = op.letra;
+
+            const texto = document.createElement('span');
+            texto.textContent = op.texto;
+
+            li.appendChild(circle);
+            li.appendChild(texto);
+            li.addEventListener('click', () => seleccionarOpcion(li));
+            ul.appendChild(li);
+        });
+
+        card.appendChild(ul);
+        container.appendChild(card);
+    });
+
+    actualizarProgreso();
+}
+
+// ── OMR ──────────────────────────────────────────────────────────────
+function buildOMR() {
+    const grid = document.getElementById('omr-grid');
+    PREGUNTAS.forEach(p => {
+        const row = document.createElement('div');
+        row.className = 'omr-row';
+
+        const num = document.createElement('span');
+        num.className   = 'omr-num';
+        num.textContent = `${p.id}.`;
+        row.appendChild(num);
+
+        ['A','B','C','D'].forEach(l => {
+            const c = document.createElement('div');
+            c.className   = 'omr-circle';
+            c.id          = `omr-${p.id}-${l}`;
+            c.textContent = l;
+            row.appendChild(c);
+        });
+
+        grid.appendChild(row);
+    });
+}
+
+// ── Seleccionar opción (solo una vez por pregunta) ────────────────────
+function seleccionarOpcion(item) {
+    const q = item.dataset.q;
+    if (answers[q]) return;              // ya respondida, ignorar
+
+    item.classList.add('selected');
+    item.closest('.question-card').classList.add('answered');
+
+    const letra = item.dataset.letra;
+    answers[q]  = letra;
+
+    // Marcar OMR (un solo color, no se puede desmarcar)
+    document.getElementById(`omr-${q}-${letra}`)?.classList.add('filled');
+
+    actualizarProgreso();
+
+    // Auto-guardar en servidor
+    fetch('/api/guardar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pregunta_id: q, letra, segundos_restantes: segundos }),
+    }).catch(() => { /* silencioso — no interrumpir al estudiante */ });
+}
+
+// ── Progreso ──────────────────────────────────────────────────────────
+function actualizarProgreso() {
+    const respondidas = Object.keys(answers).length;
+    const total       = PREGUNTAS.length;
+    document.getElementById('progress-label').textContent =
+        `${respondidas} / ${total} respondidas`;
+
+    const btn = document.getElementById('submit-btn');
+    if (respondidas === total && total > 0) {
+        btn.disabled = false;
+        btn.textContent = 'Enviar respuestas';
+        btn.classList.add('ready');
+    } else {
+        btn.disabled = true;
+        btn.textContent = 'Responde todas las preguntas para enviar';
+        btn.classList.remove('ready');
+    }
+}
+
+// ── Timer ─────────────────────────────────────────────────────────────
+function iniciarTimer() {
+    mostrarTimer(segundos);
+    timerInterval = setInterval(() => {
+        segundos--;
+        mostrarTimer(segundos);
+        if (segundos <= 0) {
+            clearInterval(timerInterval);
+            tiempoAgotado();
+        }
+    }, 1000);
+}
+
+function mostrarTimer(seg) {
+    const m  = Math.floor(seg / 60).toString().padStart(2, '0');
+    const s  = (seg % 60).toString().padStart(2, '0');
+    const el = document.getElementById('timer-display');
+    el.textContent = `${m}:${s}`;
+    el.className   = seg <= 60 ? 'critical' : seg <= 300 ? 'warning' : '';
+}
+
+function tiempoAgotado() {
+    quizActivo = false;
+    if (Object.keys(answers).length > 0) {
+        enviarRespuestas();
+    } else {
+        alert('El tiempo se agotó sin respuestas registradas.');
+        location.href = '/salir';
+    }
+}
+
+// ── Comenzar ──────────────────────────────────────────────────────────
+async function comenzar() {
+    ocultarOverlay('ov-inicio');
+    quizActivo = true;
+    try {
+        await fetch('/api/iniciar', { method: 'POST' });
+    } catch { /* continuar aunque falle */ }
+    iniciarTimer();
+    activarAntiTrampa();
+}
+
+// ── Anti-trampa ───────────────────────────────────────────────────────
+function activarAntiTrampa() {
+    // visibilitychange dispara ANTES que beforeunload al cerrar la pestaña.
+    // Esperamos 150ms para que beforeunload pueda activar pageClosing primero.
+    document.addEventListener('visibilitychange', () => {
+        if (!quizActivo || document.visibilityState !== 'hidden') return;
+        setTimeout(() => {
+            if (!pageClosing && quizActivo && document.visibilityState === 'hidden')
+                reportarTrampa('CAMBIO_PESTAÑA');
+        }, 150);
+    });
+
+    window.addEventListener('blur', () => {
+        if (!quizActivo) return;
+        setTimeout(() => {
+            if (!pageClosing && quizActivo) reportarTrampa('CAMBIO_VENTANA');
+        }, 500);
+    });
+
+    window.addEventListener('beforeunload', e => {
+        pageClosing = true;          // evita falso positivo de trampa al cerrar
+        if (!quizActivo) return;
+        // Registrar cierre en BD con sendBeacon (sobrevive al cierre de la página)
+        navigator.sendBeacon('/api/advertencia',
+            new Blob([JSON.stringify({ tipo: 'CIERRE_VENTANA' })],
+                     { type: 'application/json' }));
+        e.preventDefault(); e.returnValue = '';
+    });
+
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+            (e.ctrlKey && e.key === 'u')) e.preventDefault();
+    });
+}
+
+async function reportarTrampa(motivo) {
+    if (trampaEnCurso) return;
+    trampaEnCurso = true;
+    quizActivo    = false;
+    clearInterval(timerInterval);
+
+    try {
+        const r    = await fetch('/api/trampa', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ motivo }),
+        });
+        const data = await r.json();
+
+        if (data.estado === 'anulado') return mostrarOverlay('ov-anulado');
+
+        if (data.estado === 'bloqueado') {
+            const est = await fetch('/api/estado').then(r => r.json());
+            mostrarBloqueo(est.bloqueo, est.total);
+        }
+    } catch { /* silencioso */ }
+}
+
+// ── Bloqueo ───────────────────────────────────────────────────────────
+function mostrarBloqueo(bloqueo, total) {
+    document.getElementById('bloqueo-info').innerHTML = `
+        <strong>Intento de trampa detectado</strong><br>
+        ID de estudiante: <strong style="font-size:1.2em;letter-spacing:2px">${USUARIO?.id ?? '—'}</strong><br>
+        Hora del bloqueo: <strong>${bloqueo?.fecha || '—'}</strong><br>
+        Bloqueos acumulados: <strong>${total || '?'} / 3</strong><br><br>
+        Dile a tu profesor tu <strong>ID</strong> para que pueda desbloquearte.
+    `;
+    mostrarOverlay('ov-bloqueo');
+}
+
+async function intentarDesbloquear() {
+    const codigo = document.getElementById('codigo-input').value.trim().toUpperCase();
+    const errEl  = document.getElementById('codigo-error');
+    if (!codigo) { errEl.textContent = 'Ingresa el código.'; return; }
+
+    const data = await fetch('/api/desbloquear', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ codigo }),
+    }).then(r => r.json());
+
+    if (data.ok) {
+        ocultarOverlay('ov-bloqueo');
+        trampaEnCurso = false;
+        quizActivo    = true;
+        errEl.textContent = '';
+        document.getElementById('codigo-input').value = '';
+        clearInterval(timerInterval);          // evitar intervalo duplicado
+        if (segundos > 0) iniciarTimer();
+    } else {
+        errEl.textContent = data.mensaje || 'Código incorrecto.';
+    }
+}
+
+// ── Enviar ────────────────────────────────────────────────────────────
+async function enviarRespuestas() {
+    const btn = document.getElementById('submit-btn');
+    btn.disabled    = true;
+    btn.textContent = 'Enviando...';
+    quizActivo      = false;
+    clearInterval(timerInterval);
+
+    try {
+        const r = await fetch('/api/validar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ respuestas: answers }),
+        });
+        const data = await r.json();
+        if (!data.ok) throw new Error(data.error || 'Error');
+        location.href = '/resultados';
+    } catch (err) {
+        quizActivo      = true;
+        btn.disabled    = false;
+        btn.textContent = err.message.includes('ya fue realizada')
+            ? 'Ya enviaste esta evaluación.'
+            : 'Error al enviar. Intenta de nuevo.';
+        btn.classList.add('ready');
+        iniciarTimer();
+    }
+}
+
+// ── Panel ─────────────────────────────────────────────────────────────
+let panelAbierto = false;
+function togglePanel() {
+    panelAbierto = !panelAbierto;
+    document.getElementById('panel-body').classList.toggle('open', panelAbierto);
+    document.getElementById('toggle-btn').textContent = panelAbierto ? '▼ Minimizar' : '▲ Expandir';
+}
+
+// ── Helpers overlay ───────────────────────────────────────────────────
+function mostrarOverlay(id) {
+    // Ocultar todos primero excepto el indicado
+    ['ov-inicio','ov-bloqueo','ov-anulado','ov-completado'].forEach(oid => {
+        document.getElementById(oid).classList.toggle('oculto', oid !== id);
+    });
+}
+function ocultarOverlay(id) {
+    document.getElementById(id).classList.add('oculto');
+}
+</script>
+</body>
+</html>
