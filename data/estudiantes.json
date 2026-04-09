@@ -11,5 +11,6 @@
   { "id": 10, "nombre": "PUERTA CASTRILLON DANIELA", "documento": "" },
   { "id": 11, "nombre": "RESTREPO CORREA LUIS FELIPE", "documento": "" },
   { "id": 12, "nombre": "RIVAS TOBÓN DANIEL ALEJANDRO", "documento": "" },
-  { "id": 13, "nombre": "VARGAS MORENO JUAN CAMILO", "documento": "" }
+  { "id": 13, "nombre": "VARGAS MORENO JUAN CAMILO", "documento": "" },
+  { "id": 13, "nombre": "ADMIN", "documento": "" }
 ]
