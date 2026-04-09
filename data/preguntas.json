@@ -1,211 +1,222 @@
 [
   {
     "id": 1,
-    "texto": "¿Cuál es el objetivo principal de establecer perímetros de seguridad física?",
+    "texto": "¿Qué significa la sigla EDA en el contexto del análisis de datos?",
     "opciones": [
-      { "letra": "A", "texto": "Mejorar la estética de las oficinas centrales." },
-      { "letra": "B", "texto": "Proteger las instalaciones y el equipo contra el acceso no autorizado y daños." },
-      { "letra": "C", "texto": "Reducir el consumo de energía eléctrica del edificio." },
-      { "letra": "D", "texto": "Facilitar el acceso de extraños a las áreas de servidores." }
+      { "letra": "A", "texto": "Extracción y Depuración Automatizada." },
+      { "letra": "B", "texto": "Análisis Exploratorio de Datos." },
+      { "letra": "C", "texto": "Estructura de Datos Analítica." },
+      { "letra": "D", "texto": "Evaluación de Datos Almacenados." }
     ],
-    "feedback": "Los perímetros de seguridad física protegen instalaciones y equipos contra accesos no autorizados y posibles daños."
+    "feedback": "EDA significa Análisis Exploratorio de Datos (Exploratory Data Analysis). Es la primera fase del ciclo de análisis y se basa en hacer preguntas para entender los datos y las necesidades del proyecto."
   },
   {
     "id": 2,
-    "texto": "¿Qué se debe hacer con las ventanas en áreas desatendidas?",
+    "texto": "Juan es analista de datos recién contratado por una tienda en línea. El dueño le dice: 'No sé por qué mis clientes abandonan el carrito sin comprar.' ¿Cuál debería ser la PRIMERA acción de Juan?",
     "opciones": [
-      { "letra": "A", "texto": "Deben cerrarse con llave, especialmente si están a nivel del suelo." },
-      { "letra": "B", "texto": "Deben permanecer abiertas para mejorar la ventilación." },
-      { "letra": "C", "texto": "Solo deben cerrarse si hay objetos de valor a la vista." },
-      { "letra": "D", "texto": "Deben cubrirse con papel periódico." }
+      { "letra": "A", "texto": "Abrir directamente la base de datos y ejecutar consultas SQL sobre los pedidos." },
+      { "letra": "B", "texto": "Sentarse con el dueño para realizar una caracterización y explorar sus necesidades en detalle." },
+      { "letra": "C", "texto": "Diseñar inmediatamente el modelo relacional de la base de datos de la tienda." },
+      { "letra": "D", "texto": "Crear el backlog completo del proyecto sin hablar más con el cliente." }
     ],
-    "feedback": "Cerrar con llave las ventanas, especialmente las de nivel de suelo, previene intrusiones físicas al área de trabajo."
+    "feedback": "Antes de tocar cualquier dato, el analista debe realizar la caracterización: sentarse con el cliente, escucharlo y hacer preguntas concisas para entender bien el problema. Este es siempre el primer paso del EDA."
   },
   {
     "id": 3,
-    "texto": "En 'Escritorio y pantalla despejada', ¿cuál es una práctica recomendada?",
+    "texto": "¿A través de qué mecanismo principal se realiza el EDA durante la fase de exploración?",
     "opciones": [
-      { "letra": "A", "texto": "Dejar contraseñas en un post-it pegado al monitor." },
-      { "letra": "B", "texto": "Mantener documentos confidenciales apilados sobre el escritorio." },
-      { "letra": "C", "texto": "Bloquear la sesión de la computadora al levantarse del puesto." },
-      { "letra": "D", "texto": "Compartir la pantalla con extraños." }
+      { "letra": "A", "texto": "Creando diagramas de flujo de manera automática." },
+      { "letra": "B", "texto": "Ejecutando consultas SQL directamente sobre la base de datos." },
+      { "letra": "C", "texto": "Realizando preguntas concisas y directas al cliente y a los datos." },
+      { "letra": "D", "texto": "Construyendo el modelo analítico antes de explorar." }
     ],
-    "feedback": "Bloquear la sesión impide que terceros accedan a información confidencial cuando el puesto queda desatendido, aunque sea por poco tiempo."
+    "feedback": "El EDA se realiza a través de preguntas. El analista bombardea el proceso con preguntas objetivas que le permiten entender las necesidades del cliente y las características de los datos."
   },
   {
     "id": 4,
-    "texto": "¿Qué medida se debe tomar al ingresar visitantes?",
+    "texto": "¿Por qué es importante grabar la reunión de caracterización con el cliente?",
     "opciones": [
-      { "letra": "A", "texto": "Permitirles explorar las instalaciones libremente." },
-      { "letra": "B", "texto": "Registrar entrada/salida y supervisarlos en todo momento." },
-      { "letra": "C", "texto": "Pedirles que cuiden el centro de datos." },
-      { "letra": "D", "texto": "No pedirles ninguna identificación." }
+      { "letra": "A", "texto": "Para cumplir con requisitos legales de auditoría." },
+      { "letra": "B", "texto": "Para poder volver a escuchar y revisar las necesidades expresadas con detalle." },
+      { "letra": "C", "texto": "Para compartir el video con otros equipos de la empresa." },
+      { "letra": "D", "texto": "Para reemplazar la elaboración de la propuesta técnica." }
     ],
-    "feedback": "Registrar y supervisar a los visitantes en todo momento garantiza el control de acceso físico y la trazabilidad de quién ingresa a las instalaciones."
+    "feedback": "Grabar la reunión permite al analista volver a escuchar las necesidades del cliente cuantas veces sea necesario, asegurando que ningún requerimiento quede por fuera de la propuesta técnica."
   },
   {
     "id": 5,
-    "texto": "¿Para qué sirve el enmascaramiento de datos?",
+    "texto": "¿Qué instrumento adicional a la entrevista se puede aplicar durante la caracterización cuando quedan dudas?",
     "opciones": [
-      { "letra": "A", "texto": "Para borrar permanentemente la base de datos." },
-      { "letra": "B", "texto": "Ocultar información sensible usando datos ficticios en entornos de prueba." },
-      { "letra": "C", "texto": "Para cambiar el color de las letras en Excel." },
-      { "letra": "D", "texto": "Para ocultar la hora del sistema." }
+      { "letra": "A", "texto": "Un diagrama relacional de las tablas." },
+      { "letra": "B", "texto": "Un pipeline de transformación de datos." },
+      { "letra": "C", "texto": "Un cuestionario, formulario u otro instrumento de investigación." },
+      { "letra": "D", "texto": "Un modelo transaccional preliminar." }
     ],
-    "feedback": "El enmascaramiento de datos sustituye datos reales por ficticios en entornos de desarrollo o prueba, protegiendo la información sensible sin detener el trabajo."
+    "feedback": "Después de la entrevista inicial, el analista puede aplicar cuestionarios, lowfiles u otras herramientas de investigación para profundizar en los aspectos que no quedaron claros durante la primera exploración."
   },
   {
     "id": 6,
-    "texto": "¿Qué es el 'principio de privilegio mínimo'?",
+    "texto": "Laura es analista de datos en un hospital. El director le dice: 'Necesitamos saber cuántos pacientes se atienden por día en cada área.' ¿Cómo debería Laura redactar este requerimiento como Historia de Usuario?",
     "opciones": [
-      { "letra": "A", "texto": "Darle a todos los empleados acceso de administrador para evitar problemas." },
-      { "letra": "B", "texto": "Otorgar a un usuario solo los permisos necesarios para realizar sus tareas." },
-      { "letra": "C", "texto": "Permitir que el jefe tenga acceso a todas las redes sociales." },
-      { "letra": "D", "texto": "Quitarle el acceso a internet a toda la empresa permanentemente." }
+      { "letra": "A", "texto": "\"El sistema debe guardar datos de pacientes por área y por fecha de atención.\"" },
+      { "letra": "B", "texto": "\"Como director del hospital, quiero visualizar el conteo diario de pacientes por área, para tomar decisiones de asignación de recursos oportunamente.\"" },
+      { "letra": "C", "texto": "\"SELECT COUNT(*) FROM pacientes GROUP BY area, fecha_atencion;\"" },
+      { "letra": "D", "texto": "\"Requerimiento #1: pacientes diarios. Prioridad: alta. Estimación: 3 puntos.\"" }
     ],
-    "feedback": "El privilegio mínimo limita los permisos a lo estrictamente necesario para cada rol, reduciendo significativamente la superficie de ataque."
+    "feedback": "La Historia de Usuario usa la estructura: Como [rol], quiero [acción], para [objetivo]. Esta forma garantiza que el requerimiento esté orientado al usuario, tenga un propósito claro y permita estimar su alcance."
   },
   {
     "id": 7,
-    "texto": "¿Cuál es una función de las herramientas de prevención de fuga de datos (DLP)?",
+    "texto": "¿Cuál es la estructura básica de una Historia de Usuario (HU)?",
     "opciones": [
-      { "letra": "A", "texto": "Aumentar la velocidad de descarga de archivos de video." },
-      { "letra": "B", "texto": "Identificar y bloquear la transferencia no autorizada de información sensible." },
-      { "letra": "C", "texto": "Crear copias de seguridad de las fotos personales del personal." },
-      { "letra": "D", "texto": "Enviar correos masivos de publicidad a los clientes." }
+      { "letra": "A", "texto": "\"Si [condición]... entonces [acción]... de lo contrario [alternativa]\"." },
+      { "letra": "B", "texto": "\"Como [rol], quiero [acción], para [objetivo]\"." },
+      { "letra": "C", "texto": "\"ID, nombre, tipo de dato, descripción\"." },
+      { "letra": "D", "texto": "\"Tarea, sprint, prioridad, costo estimado\"." }
     ],
-    "feedback": "Las herramientas DLP monitorizan y bloquean activamente la transferencia no autorizada de datos sensibles fuera de la organización."
+    "feedback": "La Historia de Usuario usa las palabras clave cómo/como, quiero y para. Por ejemplo: \"Como analista de datos, quiero levantar un listado de requerimientos, para definir el alcance del proyecto.\""
   },
   {
     "id": 8,
-    "texto": "¿Por qué es importante la segregación de redes?",
+    "texto": "Pedro presentó al cliente una lista de 15 requerimientos levantados durante la exploración. Al revisarlos juntos, el cliente indicó que 4 de ellos 'ya no aplican porque el proceso del negocio cambió'. ¿A qué fase del proceso de análisis corresponde esta actividad?",
     "opciones": [
-      { "letra": "A", "texto": "Para evitar que una amenaza se propague lateralmente por toda la infraestructura." },
-      { "letra": "B", "texto": "Para que el internet sea más lento en las áreas de descanso." },
-      { "letra": "C", "texto": "Para que los cables se vean más ordenados en el rack." },
-      { "letra": "D", "texto": "Para obligar a los empleados a usar solo una aplicación por red." }
+      { "letra": "A", "texto": "Caracterización inicial del proyecto con el cliente." },
+      { "letra": "B", "texto": "Construcción del Data Lake con las fuentes de datos." },
+      { "letra": "C", "texto": "Refinamiento de requerimientos para depurar y validar lo que realmente se necesita." },
+      { "letra": "D", "texto": "Modelado analítico para definir las reglas de negocio." }
     ],
-    "feedback": "Segregar la red contiene las amenazas dentro de segmentos, evitando que un atacante se mueva lateralmente por toda la infraestructura."
+    "feedback": "El refinamiento consiste en sentarse con el cliente y revisar cada requerimiento para validar cuáles siguen vigentes y cuáles deben eliminarse. Como purificar el oro: se retiran las impurezas hasta tener solo lo que realmente tiene valor."
   },
   {
     "id": 9,
-    "texto": "¿Qué se debe verificar antes de reutilizar o eliminar un equipo tecnológico?",
+    "texto": "¿Qué es un Data Lake?",
     "opciones": [
-      { "letra": "A", "texto": "Que el equipo tenga pegatinas decorativas nuevas." },
-      { "letra": "B", "texto": "Que la batería esté cargada al 100%." },
-      { "letra": "C", "texto": "Que los medios de almacenamiento hayan sido borrados de forma segura o destruidos." },
-      { "letra": "D", "texto": "Que el mouse funcione perfectamente." }
+      { "letra": "A", "texto": "Un lenguaje de programación especializado en análisis estadístico." },
+      { "letra": "B", "texto": "Una base de datos relacional con tablas ya normalizadas y listas para consultar." },
+      { "letra": "C", "texto": "Un repositorio que acumula grandes volúmenes de datos provenientes de diversas fuentes." },
+      { "letra": "D", "texto": "Un tipo de gráfica para visualizar tendencias de datos en el tiempo." }
     ],
-    "feedback": "Antes de reutilizar o desechar un equipo, sus medios de almacenamiento deben sanearse o destruirse físicamente para evitar fuga de datos residuales."
+    "feedback": "El Data Lake es un lago de datos donde se van acumulando todos los datos del proyecto desde múltiples fuentes (tablas, Excel, APIs, etc.) antes de ser procesados y organizados."
   },
   {
     "id": 10,
-    "texto": "¿Cuál es una recomendación para el uso de dispositivos de punto final en lugares públicos?",
+    "texto": "¿Cómo se llama el repositorio donde se almacenan los datos ya unidos, cruzados y organizados, listo para el análisis?",
     "opciones": [
-      { "letra": "A", "texto": "Compartir la red Wi-Fi abierta con cualquier persona." },
-      { "letra": "B", "texto": "Dejar la laptop en la mesa mientras se va al baño." },
-      { "letra": "C", "texto": "Usar filtros de privacidad en la pantalla y no dejar el equipo desatendido." },
-      { "letra": "D", "texto": "Gritar la contraseña en voz alta para que el sistema la reconozca." }
+      { "letra": "A", "texto": "Data Pipeline." },
+      { "letra": "B", "texto": "Data Warehouse o almacén de datos." },
+      { "letra": "C", "texto": "Data Lake secundario." },
+      { "letra": "D", "texto": "Data Dictionary." }
     ],
-    "feedback": "Los filtros de privacidad impiden el espionaje visual (shoulder surfing) y nunca debe dejarse el equipo desatendido en espacios públicos."
+    "feedback": "El Data Warehouse (almacén de datos) es donde se guardan los datos ya procesados: las tablas del Data Lake se cruzan, se unen y se depuran para crear un almacén estructurado desde el cual se puede analizar."
   },
   {
     "id": 11,
-    "texto": "¿Qué control ayuda a detectar un incendio en etapas tempranas?",
+    "texto": "¿Para qué sirve el Diccionario de Datos?",
     "opciones": [
-      { "letra": "A", "texto": "Detectores de humo y sistemas de alarma contra incendios monitoreados." },
-      { "letra": "B", "texto": "Un balde de agua en cada esquina de la oficina." },
-      { "letra": "C", "texto": "Dejar las ventanas abiertas para que salga el calor." },
-      { "letra": "D", "texto": "Instalar solo computadoras que no se calienten." }
+      { "letra": "A", "texto": "Para traducir los términos técnicos al idioma que entiende el cliente." },
+      { "letra": "B", "texto": "Para almacenar de forma segura las contraseñas de las bases de datos." },
+      { "letra": "C", "texto": "Para guardar los scripts SQL de creación y mantenimiento de tablas." },
+      { "letra": "D", "texto": "Para documentar el ID, nombre, tipo y descripción de cada campo de los almacenes." }
     ],
-    "feedback": "Los detectores de humo y los sistemas de alarma monitoreados permiten detectar y actuar ante un incendio en sus etapas más tempranas, minimizando daños."
+    "feedback": "El Diccionario de Datos registra para cada campo: su identificador, nombre, tipo de dato (entero, string, booleano, etc.) y una descripción. Es fundamental para entender qué contiene cada almacén y cómo se relacionan los datos."
   },
   {
     "id": 12,
-    "texto": "¿Cuál es el propósito de la sincronización del reloj (clock) en los sistemas?",
+    "texto": "¿Qué técnica se utiliza para estimar en equipo la dificultad de los requerimientos?",
     "opciones": [
-      { "letra": "A", "texto": "Para que los empleados no lleguen tarde a las reuniones." },
-      { "letra": "B", "texto": "Asegurar que los registros (logs) tengan una marca de tiempo precisa para auditorías." },
-      { "letra": "C", "texto": "Para que la computadora sea más rápida al procesar datos." },
-      { "letra": "D", "texto": "Para cambiar automáticamente el fondo de pantalla según la hora." }
+      { "letra": "A", "texto": "Diagrama de Gantt con fechas de inicio y fin por tarea." },
+      { "letra": "B", "texto": "Análisis FODA del proyecto." },
+      { "letra": "C", "texto": "Planning Poker usando los números de la serie Fibonacci." },
+      { "letra": "D", "texto": "Matriz de priorización RICE (Reach, Impact, Confidence, Effort)." }
     ],
-    "feedback": "La sincronización del reloj asegura marcas de tiempo confiables y consistentes en todos los logs, lo que es fundamental para investigaciones y auditorías forenses."
+    "feedback": "El Planning Poker (Pliner Poker) usa los números de la serie de Fibonacci (1, 3, 5, 8, 13...) para que cada miembro del equipo vote la dificultad de un requerimiento, luego se promedia para obtener una estimación consensuada."
   },
   {
     "id": 13,
-    "texto": "¿Por qué se deben proteger físicamente los cables de red?",
+    "texto": "Una empresa de e-commerce recibe datos de clics de usuarios en tiempo real. El equipo debe: 1) cargar esos eventos, 2) eliminar registros duplicados, 3) calcular la tasa de conversión por producto y 4) enviar una alerta si la tasa cae por debajo del 2%. ¿Qué estructura de datos representa este flujo?",
     "opciones": [
-      { "letra": "A", "texto": "Para que no se ensucien con el polvo del suelo." },
-      { "letra": "B", "texto": "Para evitar daños accidentales, interferencias o sabotaje en la transmisión de datos." },
-      { "letra": "C", "texto": "Para que los cables amarillos no se mezclen con los azules." },
-      { "letra": "D", "texto": "Para aumentar la resistencia eléctrica de la red." }
+      { "letra": "A", "texto": "Un Diccionario de Datos con los campos del evento de clic." },
+      { "letra": "B", "texto": "Un pipeline de datos con fases de ingesta, limpieza/transformación, procesamiento y decisión ó acción/alerta." },
+      { "letra": "C", "texto": "Un modelo transaccional con tablas normalizadas de clientes y productos." },
+      { "letra": "D", "texto": "Un Data Warehouse con almacenes de ventas ya unificados." }
     ],
-    "feedback": "Proteger físicamente el cableado evita daños accidentales, interferencias electromagnéticas deliberadas y actos de sabotaje que interrumpirían la transmisión de datos."
+    "feedback": "Un pipeline (tubo) tiene exactamente esas cuatro fases: inyección de datos → limpieza y transformación → procesamiento → decisión final. La alerta al final es la fase de decisión, que puede ser automatizada o conectada a un agente de IA."
   },
   {
     "id": 14,
-    "texto": "¿Qué acción es fundamental en la gestión de copias de seguridad?",
+    "texto": "Carlos va a presentar su propuesta técnica para analizar 2 millones de registros diarios de una empresa logística. El cliente le pregunta: '¿Qué necesitamos tener listo antes de empezar?' ¿Qué debe incluir Carlos en su respuesta además de los requerimientos?",
     "opciones": [
-      { "letra": "A", "texto": "Hacer la copia solo una vez al año para no gastar espacio." },
-      { "letra": "B", "texto": "Guardar el disco de respaldo justo encima del servidor principal." },
-      { "letra": "C", "texto": "Probar periódicamente la restauración de los datos para asegurar que funcionen." },
-      { "letra": "D", "texto": "Borrar la copia original una vez que se termina el respaldo." }
+      { "letra": "A", "texto": "Solo el diagrama Entidad-Relación de las tablas actuales de la empresa." },
+      { "letra": "B", "texto": "Solo el backlog priorizado con los sprints organizados por mes." },
+      { "letra": "C", "texto": "La validación tecnológica: servidores, hardware, herramientas cloud, librerías (Python/Pandas) y tipo de base de datos es requerida." },
+      { "letra": "D", "texto": "Solo el costo mensual del proyecto en pesos colombianos." }
     ],
-    "feedback": "Probar periódicamente la restauración es esencial para validar que los backups son funcionales y que los datos son realmente recuperables cuando se necesiten."
+    "feedback": "La validación tecnológica especifica todo lo que se necesita antes de ejecutar: hardware (servidores, equipos), red/network (cloud, conectividad), y software (Python, librerías, bases de datos). Sin esto, no se puede estimar correctamente el proyecto."
   },
   {
     "id": 15,
-    "texto": "¿Cuál es la función principal de un Sistema de Alimentación Ininterrumpida (UPS/SAI)?",
+    "texto": "¿Qué es el Scope of Work (alcance del trabajo) en un proyecto de análisis?",
     "opciones": [
-      { "letra": "A", "texto": "Proporcionar energía temporal durante un fallo eléctrico para un apagado seguro." },
-      { "letra": "B", "texto": "Hacer que el internet sea inalámbrico en toda la oficina." },
-      { "letra": "C", "texto": "Ahorrar dinero en la factura de la luz apagando los focos." },
-      { "letra": "D", "texto": "Detectar si hay virus en los correos electrónicos." }
+      { "letra": "A", "texto": "El listado de errores encontrados durante el proceso de refinamiento." },
+      { "letra": "B", "texto": "El conjunto de sprints del proyecto organizados mes a mes." },
+      { "letra": "C", "texto": "La definición concreta de los límites y alcances del trabajo que se va a realizar." },
+      { "letra": "D", "texto": "El presupuesto total aprobado y firmado por los stakeholders." }
     ],
-    "feedback": "El UPS/SAI suministra energía eléctrica temporal durante un fallo para permitir un apagado ordenado de los sistemas sin pérdida ni corrupción de datos."
+    "feedback": "El Scope of Work define qué entra y qué no entra dentro del proyecto. Se construye una vez que el refinamiento y las priorizaciones están listos, y es indispensable para que el analista no sobrepase el tiempo y costo acordados."
   },
   {
     "id": 16,
-    "texto": "¿Qué se busca con el control de 'Acceso al código fuente'?",
+    "texto": "¿Quiénes son los stakeholders dentro de un proyecto?",
     "opciones": [
-      { "letra": "A", "texto": "Permitir que todos los clientes vean cómo se programó la aplicación." },
-      { "letra": "B", "texto": "Vender el código en internet para obtener ganancias extra." },
-      { "letra": "C", "texto": "Restringir quién puede leer o modificar las instrucciones lógicas de los sistemas." },
-      { "letra": "D", "texto": "Hacer que el código sea más difícil de leer para los programadores." }
+      { "letra": "A", "texto": "Los servidores donde se almacena físicamente el Data Lake." },
+      { "letra": "B", "texto": "Las herramientas de software seleccionadas durante la validación tecnológica." },
+      { "letra": "C", "texto": "Los formatos de datos que se consumen en el pipeline." },
+      { "letra": "D", "texto": "Los interesados en el proyecto, que pueden ser uno o muchos, incluyendo quienes aprueban el presupuesto." }
     ],
-    "feedback": "Controlar el acceso al código fuente protege la propiedad intelectual de la organización y evita modificaciones maliciosas o no autorizadas a los sistemas."
+    "feedback": "Los stakeholders (interesados) son todas las personas con interés en el proyecto. Con ellos se presentan los alcances, las propuestas técnicas y se definen los acuerdos presupuestales y de ejecución."
   },
   {
     "id": 17,
-    "texto": "¿Qué es la 'Defensa en Profundidad' en seguridad?",
+    "texto": "¿Cuál es el primer modelo de datos que se debe construir en el proceso de análisis?",
     "opciones": [
-      { "letra": "A", "texto": "Poner los servidores en el sótano más profundo del edificio." },
-      { "letra": "B", "texto": "Implementar múltiples capas de seguridad para que si una falla, otra proteja el activo." },
-      { "letra": "C", "texto": "Contratar guardias que sepan bucear." },
-      { "letra": "D", "texto": "Tener solo una contraseña muy larga pero ningún otro control." }
+      { "letra": "A", "texto": "El modelo analítico con las reglas de negocio." },
+      { "letra": "B", "texto": "El modelo transaccional que refleja la estructura del software." },
+      { "letra": "C", "texto": "El modelo de pipeline con las fases de transformación." },
+      { "letra": "D", "texto": "El modelo de insights con las perspectivas ocultas." }
     ],
-    "feedback": "La Defensa en Profundidad superpone múltiples capas de control: si una capa es vulnerada, las capas siguientes continúan protegiendo el activo crítico."
+    "feedback": "El modelo transaccional es el primero que se desarrolla: describe cómo están estructurados los datos en el software (tablas, relaciones). A partir de él se puede construir después el modelo analítico."
   },
   {
     "id": 18,
-    "texto": "¿Por qué no se deben usar cuentas genéricas como 'admin' o 'root' a diario?",
+    "texto": "¿Qué es el modelo analítico en el ciclo de análisis de datos?",
     "opciones": [
-      { "letra": "A", "texto": "Porque son palabras muy difíciles de escribir correctamente." },
-      { "letra": "B", "texto": "Porque el sistema se vuelve más lento si muchos usan el mismo nombre." },
-      { "letra": "C", "texto": "Porque esas cuentas no pueden usar el correo electrónico." },
-      { "letra": "D", "texto": "Porque impiden identificar qué persona realizó una acción (falta de trazabilidad)." }
+      { "letra": "A", "texto": "El diagrama Entidad-Relación (ER) de la base de datos transaccional operativa." },
+      { "letra": "B", "texto": "El script SQL de creación y normalización de las tablas del almacén." },
+      { "letra": "C", "texto": "Un modelo derivado del almacén que organiza los datos para extraer insights y definir reglas de negocio." },
+      { "letra": "D", "texto": "El formato de entrega del reporte final que se presenta al cliente." }
     ],
-    "feedback": "Las cuentas genéricas compartidas impiden la trazabilidad: ante un incidente es imposible determinar qué persona específica realizó cada acción en el sistema."
+    "feedback": "El modelo analítico toma los datos del almacén y los reorganiza con un propósito analítico: identificar perspectivas ocultas (insights) y definir las reglas de negocio que guiarán los pipelines, reportes y automatizaciones."
+  },
+  {
+    "id": 19,
+    "texto": "¿Qué son los insights en el contexto del análisis de datos?",
+    "opciones": [
+      { "letra": "A", "texto": "Los errores o bugs encontrados en los scripts SQL del almacén." },
+      { "letra": "B", "texto": "Los tipos de datos soportados nativamente por el Data Lake." },
+      { "letra": "C", "texto": "Las perspectivas ocultas o reglas de negocio que se descubren al analizar los datos en profundidad." },
+      { "letra": "D", "texto": "Los campos del diccionario de datos que aún no tienen tipo definido." }
+    ],
+    "feedback": "Los insights son las perspectivas ocultas dentro de los datos que el analista descubre a través del EDA y el modelo analítico. Se convierten en reglas de negocio que orientan decisiones, reportes y automatizaciones del proyecto."
   },
   {
     "id": 20,
-    "texto": "¿Qué significa que un control sea 'Preventivo'?",
+    "texto": "¿Cómo se denominan las fases iterativas de trabajo en la metodología SCRUM?",
     "opciones": [
-      { "letra": "A", "texto": "Que su función es evitar que ocurra un incidente antes de que pase." },
-      { "letra": "B", "texto": "Que solo se usa después de que el sistema ya falló." },
-      { "letra": "C", "texto": "Que sirve para avisar que algo malo está pasando." },
-      { "letra": "D", "texto": "Que no tiene utilidad real." }
+      { "letra": "A", "texto": "Módulos." },
+      { "letra": "B", "texto": "Ciclos." },
+      { "letra": "C", "texto": "Fases." },
+      { "letra": "D", "texto": "Sprints." }
     ],
-    "feedback": "Un control preventivo actúa proactivamente para evitar que ocurra un incidente de seguridad, a diferencia de los controles detectivos (que alertan) o correctivos (que reparan)."
+    "feedback": "En SCRUM las fases de trabajo se llaman sprints. Cada sprint tiene una duración fija (por ejemplo 15 o 20 días) y contiene un subconjunto del backlog, permitiendo entregar valor de forma incremental e iterativa."
   }
 ]
